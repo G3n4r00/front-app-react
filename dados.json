@@ -1,18 +1,10 @@
 {
-    "produtos": [
-        {
-            "id": 1,
-            "nome": "Resident Evil 4", 
-            "proco": 150,
-            "desc": "Jogo de Tiro para 1 pessoa"
-        },
-        {
-            "id": 2,
-            "nome": "Sonic Mania", 
-            "proco": 350,
-            "desc": "Jogo de Ação"
-        }
-
-    ]
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Resident Evil 4",
+      "proco": 150,
+      "desc": "Jogo de Tiro para 1 pessoa"
+    }
+  ]
 }
-
