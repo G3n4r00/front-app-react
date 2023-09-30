@@ -5,6 +5,9 @@ export default function Produtos(){
 
     //Sera um array de produtos o backend que vai dar o formato a esse array
     const [produtosApi, setProdutosApi] = useState([])
+    const [open, setOpen] = useState(false);
+    const [prodID, setProdID] = useState(0);
+
 
     //quero que ele faça uma requisição http
     useEffect(
@@ -17,7 +20,7 @@ export default function Produtos(){
             //vem via requisição http via navegador e precisamos usar json 
 
             //requisição para o endereço da nossa api que criamos la no json server 
-        }, []
+        },[open]
     )
 
     const handleDelete = (id)=>{
@@ -25,20 +28,21 @@ export default function Produtos(){
         .then(()=> (window.location = '/produtos'))
         .catch((error)=> console.log(error))
     }
+    
 
-    //usar o nome do useState o mesmo do props
-    const [open, setOpen] = useState(false);
-
-
+    const handleEdit = (id)=>{
+        setProdID(id);
+        setOpen(true);
+    }
 
     return(
         <section>
-            <button>Cadastrar Jogo</button>
+            <button onClick={()=> setOpen(true)}>Cadastrar Jogo</button>
             <h1>Lista de Jogos</h1>
 
-            { open ? <ModalActions open={open} setOpen={setOpen}/> : ""}
+            {open ? <ModalActions open={open} id={prodID} setOpen={setOpen} /> : ""}
 
-            <button onClick={()=>setOpen(true)}>OPEN-MODAL</button> 
+          
 
             <table>
                 <thead>
@@ -56,18 +60,18 @@ export default function Produtos(){
                         <td>{prod.desc}</td>
                         <td>{prod.preco}</td>
                         <td>
-                            <button onClick={handleDelete.bind(this, prod.id)} >Deletar</button> 
+                            <button onClick={handleDelete.bind(this, prod.id)}  >Deletar</button> |   <button onClick={()=>handleEdit(prod.id)}>Editar</button>
                         </td>
                     </tr>
-                ))}
+                ))
+                }
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colSpan="4">Lista de Jogos em promoção!!</td>
+                        <td colSpan="4">Lista de Jogos em promoção!!!</td>
                     </tr>
                 </tfoot>
             </table>
-
         </section>
     )
 }

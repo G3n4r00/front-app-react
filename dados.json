@@ -2,8 +2,8 @@
   "produtos": [
     {
       "id": 1,
-      "nome": "Resident Evil 4",
-      "proco": 150,
+      "nome": "Super Mario Bros",
+      "preco": "1500",
       "desc": "Jogo de Tiro para 1 pessoa"
     }
   ]
